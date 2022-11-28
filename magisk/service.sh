@@ -48,6 +48,9 @@ fi
     resetprop ro.boot.veritymode enforcing
     resetprop vendor.boot.vbmeta.device_state locked
 
+    # make bank apps and Google Pay happy
+    resetprop sys.oem_unlock_allowed 0
+
     # avoid breaking encryption, set shipping level to 32 for devices >=33 to allow for software attestation.
     if [[ "$(getprop ro.product.first_api_level)" -ge 33 ]]; then
         resetprop ro.product.first_api_level 32
