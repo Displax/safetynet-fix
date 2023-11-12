@@ -23,10 +23,10 @@ class ProxyProvider(
         logDebug("Provider: get service - type=$type algorithm=$algorithm")
         if (type == "KeyStore" && Build.HOST != "xiaomi.eu") {
 
-            val patchedProduct     = /* ro.product.name      */ "marlin"
-            val patchedDevice      = /* ro.product.device    */ "marlin"
-            val patchedModel       = /* ro.product.model     */ "Pixel XL"
-            val patchedFingerprint = /* ro.build.fingerprint */ "google/marlin/marlin:7.1.2/NJH47F/4146041:user/release-keys"
+            val patchedProduct     = /* ro.product.name      */ "WW_Phone"
+            val patchedDevice      = /* ro.product.device    */ "ASUS_X00HD_4"
+            val patchedModel       = /* ro.product.model     */ "ASUS_X00HD"
+            val patchedFingerprint = /* ro.build.fingerprint */ "asus/WW_Phone/ASUS_X00HD_4:7.1.1/NMF26F/14.2016.1801.372-20180119:user/release-keys"
 
             logDebug("Patch PRODUCT prop. Set it to: $patchedProduct")
             Build::class.java.getDeclaredField("PRODUCT").let { field ->

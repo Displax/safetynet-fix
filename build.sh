@@ -12,12 +12,13 @@ debug_mode=1
 if [[ "$build_mode" == "release" ]]; then
     debug_mode=0
 fi
-$ANDROID_HOME/ndk/25.2.9519653/ndk-build -j48 NDK_DEBUG=$debug_mode
+$ANDROID_HOME/ndk/26.1.10909125/ndk-build -B NDK_APPLICATION_MK=jni/Application.mk NDK_DEBUG=$debug_mode
 popd
 
 pushd java
 # Must always be release due to R8 requirement
 ./gradlew assembleRelease
+xxd -i "app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex" > "../zygisk/module/jni/classes_dex.h"
 popd
 
 mkdir -p magisk/zygisk
@@ -28,7 +29,6 @@ done
 
 pushd magisk
 version="$(grep '^version=' module.prop  | cut -d= -f2)"
-rm -f "../safetynet-fix-$version.zip" classes.dex
-unzip "../java/app/build/outputs/apk/release/app-release.apk" "classes.dex"
+rm -f "../safetynet-fix-$version.zip"
 zip -r9 "../safetynet-fix-$version.zip" .
 popd

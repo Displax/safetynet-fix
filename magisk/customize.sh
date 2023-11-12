@@ -8,8 +8,6 @@ else
     abort    "*********************************************************"
 fi
 
-mv -f "$MODPATH/SNFix.dex" "/data/adb/"
-
 # Android < 8.0 | No Zygisk
 if [ "$API" -lt 26 ]; then
     ui_print "*********************************************************"
@@ -20,5 +18,4 @@ if [ "$API" -lt 26 ]; then
 
     # Remove Zygisk part but keep props and scripts
     rm -rf "$MODPATH/zygisk"
-    rm -rf "/data/adb/SNFix.dex"
 fi

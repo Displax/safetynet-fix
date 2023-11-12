@@ -1,3 +1,10 @@
+## v3.0.0-MOD
+
+* Fix new Play Integrity update, DEVICE verdict is green again.
+* Strip native libs size.
+* Unmap module from unstable GMS process.
+* Spoof first_api_level to 32 if prop value is greater than 32 or prop doesn't exist.
+
 ## v2.4.0-MOD_2.0
 * Fix KernelSU support. You still need "ZygiskOnKernelSU".
 * Fix WiFi calling on some devices (and maybe other related issues) by moving changing *ro.product.first_api_level* from global namespace to GMS only.
