@@ -44,7 +44,7 @@ fi
     resetprop ro.boot.veritymode enforcing
     resetprop vendor.boot.vbmeta.device_state locked
 	
-	# Avoid breaking encryption, set shipping level to 32 for devices >=33 to allow for software attestation
+    # Avoid breaking encryption, set shipping level to 32 for devices >=33 to allow for software attestation
     api_level=$(getprop ro.product.first_api_level)
     if [[ -z "$api_level" || "$api_level" -gt 32 ]]; then
         resetprop ro.product.first_api_level 32
